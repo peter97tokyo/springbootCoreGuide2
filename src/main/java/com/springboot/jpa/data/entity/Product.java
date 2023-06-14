@@ -8,11 +8,27 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
 @Entity
 // entity 명시 및 테이블과 일대일 매칭
 @Table(name= "product")
 // 필수가 아니지만 사용하는 경우는 class의 이름과 테이블의 이름을 다르게 지정해야하는 경우
+@Getter
+@Setter
+@NoArgsConstructor
+// 매개변수가 없는 생성자를 자동 생성합니다.
+@AllArgsConstructor
+// 모든 필드를 매개변수로 갖는 생성자를 자동 생성합니다.
+//@RequiredArgsConstructor
+// 필드 중 final이나 @NotNull이 설정된 변수를 매개변수로 갖는 생성자를 자동생성한다.
+//@Data
+// getter setter NoArgsConstructor AllArgsConstructor.. 등을 사용 하나로 쓸수 있음
 public class Product {
 	
 	@Id
@@ -41,57 +57,5 @@ public class Product {
 	private LocalDateTime createAt;
 	
 	private LocalDateTime updateAt;
-
-	public Long getNumber() {
-		return number;
-	}
-
-	public void setNumber(Long number) {
-		this.number = number;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public Integer getPrice() {
-		return price;
-	}
-
-	public void setPrice(Integer price) {
-		this.price = price;
-	}
-
-	public Integer getStock() {
-		return stock;
-	}
-
-	public void setStock(Integer stock) {
-		this.stock = stock;
-	}
-
-	public LocalDateTime getCreateAt() {
-		return createAt;
-	}
-
-	public void setCreateAt(LocalDateTime createAt) {
-		this.createAt = createAt;
-	}
-
-	public LocalDateTime getUpdateAt() {
-		return updateAt;
-	}
-
-	public void setUpdateAt(LocalDateTime updateAt) {
-		this.updateAt = updateAt;
-	}
-	
-	
-	
-	
 	
 }

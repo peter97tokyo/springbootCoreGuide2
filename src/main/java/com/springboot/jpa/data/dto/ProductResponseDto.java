@@ -1,14 +1,25 @@
 package com.springboot.jpa.data.dto;
 
-public class ProductDto {
+public class ProductResponseDto {
+	private Long number;
 	private String name;
 	private int price;
 	private int stock;
-	public ProductDto(String name, int price, int stock) {
+	public ProductResponseDto(Long number, String name, int price, int stock) {
 		super();
+		this.number = number;
 		this.name = name;
 		this.price = price;
 		this.stock = stock;
+	}
+	public ProductResponseDto() {
+		// TODO Auto-generated constructor stub
+	}
+	public Long getNumber() {
+		return number;
+	}
+	public void setNumber(Long number) {
+		this.number = number;
 	}
 	public String getName() {
 		return name;
@@ -28,4 +39,5 @@ public class ProductDto {
 	public void setStock(int stock) {
 		this.stock = stock;
 	}
+	
 }
