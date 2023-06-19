@@ -82,6 +82,30 @@ public interface ProductRepository extends JpaRepository<Product, Long>{
 	*/
 	// boolean 타입으로 지정된 컬럼값을 확인하는 키워드입니다. Product 엔티티에 boolean 타입을 사용하는
 	// 컬럼(Active) 이 없기때문에 실제로 사용하는 경우 에러가 발생합니다.
+	
+	// (Is)GreaterThan, (Is)LessThan, (Is)Between
+	List<Product> findByPriceIsGreaterThan(Long price);
+	List<Product> findByPriceGreaterThan(Long price);
+	List<Product> findByPriceGreaterThanEqual(Long price);
+	
+	List<Product> findByPriceBetween(Long rowPrice, Long highPrice);
+	/*
+	 * 숫자나 datetime 칼럼을 대상으로 한 비교 연산에 사용할수 있는 조건자 키워드, GreateThan, LessThan
+	 * 경곗값을 포함하려면 Equal 키워드를 추가하면 됩니다.
+	 */
+	
+	/* 
+	 * (Is)StartingWith(==StartsWith), (Is)EndingWith(==EndsWith),
+	 * (Is)Containing(==Contains), (Is)Like
+	 */
+	List<Product> findByNameIsLike(String name);
+	List<Product> findByNameIsStartingWith(String name);
+	List<Product> findByNameEndsWith(String name);
+	/*
+	 * 컬럼값에서 일부 일치 여부를 확인하는 조건자 키워드, 여기서 별도로 고려해야 하는 키워드는 Like입니다
+	 * Like는 코드 수준에서 메서드를 호출하면서 전달하는 값에 %를 명시적으로 입력해야 합니다.
+	 */
+	
 }
 
  
