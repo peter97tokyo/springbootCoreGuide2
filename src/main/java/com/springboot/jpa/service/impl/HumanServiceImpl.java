@@ -5,6 +5,8 @@ import java.time.LocalDateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import com.springboot.jpa.data.dto.HumanDto;
@@ -76,4 +78,11 @@ public class HumanServiceImpl implements HumanService{
 		humanRepository.deleteById(number);
 		
 	}
+	@Override
+	public String getHumanPageable(String name) throws Exception{
+		Page<Human> pageHuman = humanRepository.findByName(name, PageRequest.of(0,2) );
+		System.out.println(pageHuman.getContent()); // 이렇게 하면 내용물을 볼수 있음
+		return "success";
+	}
+	
 }

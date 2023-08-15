@@ -10,10 +10,12 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 // entity 명시 및 테이블과 일대일 매칭
@@ -29,7 +31,9 @@ import lombok.Setter;
 // 필드 중 final이나 @NotNull이 설정된 변수를 매개변수로 갖는 생성자를 자동생성한다.
 //@Data
 // getter setter NoArgsConstructor AllArgsConstructor.. 등을 사용 하나로 쓸수 있음
-public class Product {
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
+public class Product extends BaseEntity{
 	
 	@Id
 	// 엔티티 클래의 필드는 테이블의 칼럼과 매핑, id 어노테이션이 선언된 필드는 테이블의 기본값 역할로
@@ -54,8 +58,5 @@ public class Product {
 	@Column(nullable = false)
 	private Integer stock;
 	
-	private LocalDateTime createAt;
-	
-	private LocalDateTime updateAt;
 	
 }
